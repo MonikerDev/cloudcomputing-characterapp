@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/bootstrap.js"></script>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .formItems {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        .itemGroup {
+            margin: 25px;
+        }
+    </style>
+    <title>Create a new Character</title>
+</head>
+<body>
+<form class="container" action="#" th:action="@{newcharacter}" th:object="${character}" method="POST">
+    <div class="card border-info mb-3" style="max-width: 20rem;">
+        <div class="card-header">
+            <h1>Basic Details</h1>
+        </div>
+        <div class="card-body">
+            <div class="formItems">
+                <label for="name">Character Name</label>
+                <input type="text" th:field="*{name}" id="name" placeholder="Character Name">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+            <div class="formItems">
+                <label for="race">Race</label>
+                <input type="text" th:field="*{race}" id="race" placeholder="Character Race">
+                <span th:if="${#fields.hasErrors('race')}" th:errors="*{race}"></span>
+            </div>
+            <div class="formItems">
+                <label for="char_class">Class</label>
+                <input type="text" th:field="*{char_class}" id="char_class" placeholder="Character Class">
+                <span th:if="${#fields.hasErrors('char_class')}" th:errors="*{char_class}"></span>
+            </div>
+            <div class="formItems">
+                <label for="back_ground">Background</label>
+                <input type="text" th:field="*{back_ground}" id="back_ground" placeholder="Character Background">
+                <span th:if="${#fields.hasErrors('back_ground')}" th:errors="*{back_ground}"></span>
+            </div>
+            <div class="formItems">
+                <label for="level">Level</label>
+                <input type="text" th:field="*{level}" id="level" placeholder="Character Level">
+                <span th:if="${#fields.hasErrors('level')}" th:errors="*{level}"></span>
+            </div>
+        </div>
+    </div>
+    <div class="card border-info mb-3" style="max-width: 20rem;">
+        <div class="card-header">
+            <h1>Ability Scores</h1>
+        </div>
+        <div class="card-body">
+            <div class="formItems">
+                <label for="strength">Strength</label>
+                <input type="text" th:field="*{strength}" id="strength" placeholder="Strength">
+                <span th:if="${#fields.hasErrors('strength')}" th:errors="*{strength}"></span>
+            </div>
+            <div class="formItems">
+                <label for="dexterity">Dexterity</label>
+                <input type="text" th:field="*{dexterity}" id="dexterity" placeholder="Dexterity">
+                <span th:if="${#fields.hasErrors('dexterity')}" th:errors="*{dexterity}"></span>
+            </div>
+            <div class="formItems">
+                <label for="constitution">Constitution</label>
+                <input type="text" th:field="*{constitution}" id="constitution" placeholder="Constitution">
+                <span th:if="${#fields.hasErrors('constitution')}" th:errors="*{constitution}"></span>
+            </div>
+            <div class="formItems">
+                <label for="intelligence">Intelligence</label>
+                <input type="text" th:field="*{intelligence}" id="intelligence" placeholder="Intelligence">
+                <span th:if="${#fields.hasErrors('intelligence')}" th:errors="*{intelligence}"></span>
+            </div>
+            <div class="formItems">
+                <label for="wisdom">Wisdom</label>
+                <input type="text" th:field="*{wisdom}" id="wisdom" placeholder="Wisdom">
+                <span th:if="${#fields.hasErrors('wisdom')}" th:errors="*{wisdom}"></span>
+            </div>
+            <div class="formItems">
+                <label for="charisma">Charisma</label>
+                <input type="text" th:field="*{charisma}" id="charisma" placeholder="Charisma">
+                <span th:if="${#fields.hasErrors('charisma')}" th:errors="*{charisma}"></span>
+            </div>
+        </div>
+    </div>
+    <div class="card border-info mb-3" style="max-width: 20rem;">
+        <div class="card-header">
+            <h1>Finish Character</h1>
+        </div>
+        <div class="card-body">
+            <input type="submit" class="btn btn-primary" value="Create">
+        </div>
+    </div>
+</form>
+</body>
+</html>

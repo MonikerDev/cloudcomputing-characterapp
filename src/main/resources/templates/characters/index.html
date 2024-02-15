@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Character List</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/bootstrap.js"></script>
+
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 10px;
+            width: 100%;
+        }
+        .basicContainer{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: left;
+        }
+        .basicStat{
+            flex-basis: 90%;
+        }
+        .abilityContainer{
+            display: flex;
+            flex-wrap: wrap;
+            flex-shrink: 2;
+            justify-content: space-evenly;
+        }
+        .singleAbilityContainer{
+            display: flex;
+            flex-basis: 40%;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0.1rem;
+        }
+        .abilityScore {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<h2>Characters</h2>
+<div class="container">
+    <div th:each="character : ${characters}" class="card bg-primary mb-3" style="max-width: 60rem;">
+        <div class="card-body character-card">
+            <h2 class="card-title" th:text="${character.name}"></h2>
+            <img class="card-img-top" src="..." alt="Card image cap">
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" data-bs-toggle="tab" th:href="@{#basestat{id}(id = ${character.id})}" aria-selected="true" role="tab" tabindex="-1">Basic Stats</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" th:href="@{#ability{id}(id = ${character.id})}" aria-selected="false" role="tab">Ability Scores</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" th:href="@{#options{id}(id = ${character.id})}" aria-selected="false" role="tab">Options</a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active show" th:id="basestat + ${character.id}" role="tabpanel">
+                    <div class="basicContainer card text-white bg-dark mb-3">
+                        <div class="basicStat">
+                            <h5>Race: </h5>
+                            <p class="card-text" th:text="${character.race}"></p> </br>
+                        </div>
+                        <div class="basicStat">
+                            <h5>Class: </h5>
+                            <p class="card-text" th:text="${character.char_class}"></p></br>
+                        </div>
+                        <div class="basicStat">
+                            <h5>Background: </h5>
+                            <p class="card-text" th:text="${character.back_ground}"></p></br>
+                        </div>
+                        <div class="basicStat">
+                            <h5>Level: </h5>
+                            <p class="card-text" th:text="${character.level}"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" th:id="ability + ${character.id}" role="tabpanel">
+                    <div class="abilityContainer card text-white bg-dark mb-3">
+                        <div class="singleAbilityContainer">
+                            <h5 class="abilityScore">Strength</h5></br>
+                            <p class="card-text abilityScore" th:text="${character.strength}"></p></br>
+                        </div>
+                        <div class="singleAbilityContainer">
+                            <h5 class="abilityScore">Dexterity</h5></br>
+                            <p class="card-text abilityScore" th:text="${character.dexterity}"></p></br>
+                        </div>
+                        <div class="singleAbilityContainer">
+                            <h5 class="abilityScore">Constitution</h5></br>
+                            <p class="card-text abilityScore" th:text="${character.constitution}"></p></br>
+                        </div>
+                        <div class="singleAbilityContainer">
+                            <h5 class="abilityScore">Intelligence</h5></br>
+                            <p class="card-text abilityScore" th:text="${character.intelligence}"></p></br>
+                        </div>
+                        <div class="singleAbilityContainer">
+                            <h5 class="abilityScore">Wisdom</h5></br>
+                            <p class="card-text abilityScore" th:text="${character.wisdom}"></p></br>
+                        </div>
+                        <div class="singleAbilityContainer">
+                            <h5 class="abilityScore">Charisma</h5></br>
+                            <p class="card-text abilityScore" th:text="${character.charisma}"></p></br>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" th:id="options + ${character.id}" role="tabpanel">
+                    <div class="card text-white bg-dark mb-3">
+                        </br>
+                        <a th:href="@{editcharacter(id=${character.id})}"><button type="button" class="btn btn-secondary">Edit</button></a>
+                        <a th:href="@{delete(id=${character.id})}"><button type="button" class="btn btn-secondary">Delete</button></a>
+                        </br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card border-info mb-3" style="max-width: 20rem;">
+    <div class="card-header">Create a new character</div>
+    <div class="card-body">
+        <p><a href="/characters/create">Create</a></p>
+    </div>
+<div>
+
+</div>
+</body>
+</html>

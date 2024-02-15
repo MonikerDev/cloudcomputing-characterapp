@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Users</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.password}"></td>
+                <td><a th:href="@{edit(id=${user.id})}">Edit</a></td>
+                <td><a th:href="@{delete(id=${user.id})}">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <p><a href="/crud/signup">Add a new user</a></p>
+</body>
+</html>
