@@ -45,6 +45,10 @@
             <version>5.6.15.Final</version>
         </dependency>
         <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-spanner-jdbc</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.codingapi.springboot</groupId>
             <artifactId>springboot-starter-leaf</artifactId>
             <version>1.4.0</version>
@@ -89,6 +93,13 @@
                 <version>${spring-cloud-azure.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <artifactId>libraries-bom</artifactId>
+                <groupId>com.google.cloud</groupId>
+                <scope>import</scope>
+                <type>pom</type>
+                <version>26.29.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
